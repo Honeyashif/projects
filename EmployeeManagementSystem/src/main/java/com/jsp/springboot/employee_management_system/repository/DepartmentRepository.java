@@ -14,6 +14,6 @@ public interface DepartmentRepository extends JpaRepository<Department, Integer>
 	
 	public Double findTotalSalaryByDepartmentId(int departmentId);
 
-	@Query("SELECT d FROM Department d JOIN d.employees e GROUP BY d.id ORDER BY COUNT(e) ASC")
+	@Query("SELECT d FROM Department d LEFT JOIN d.employees e GROUP BY d.id ORDER BY COUNT(e) ASC")
 	public List<Department> findDepartmentWithMinimumEmployees(@Param("minEmployeeCount") int minEmployeeCount); 
 }

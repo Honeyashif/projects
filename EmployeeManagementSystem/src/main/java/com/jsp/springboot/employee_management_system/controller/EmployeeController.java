@@ -78,7 +78,7 @@ public class EmployeeController {
 	}
 
 	@PutMapping("/departments/update-by-id")
-	public ResponseEntity<ResponseStructure<Department>> updateDepartmentDetails(Department updatedDepartment) {
+	public ResponseEntity<ResponseStructure<Department>> updateDepartmentDetails(@RequestBody Department updatedDepartment) {
 		return employeeService.updateDepartmentDetails(updatedDepartment);
 	}
 
@@ -87,15 +87,15 @@ public class EmployeeController {
 		return employeeService.deleteDeaprtmentById(departmentId);
 	}
 
-	@GetMapping("department/count")
+	@GetMapping("/department/count")
 	public ResponseEntity<ResponseStructure<Map<Department,Integer>>> getDepartmentWithEMployeeCount(
 			int departmentId) {
 		return employeeService.getDepartmentWithEMployeeCount(departmentId);
 	}
 
 	@GetMapping("/department/total-salary")
-	public ResponseEntity<ResponseStructure<Double>> totalSalaryOfDepartment(int deaprtmentId) {
-		return employeeService.totalSalaryOfDepartment(deaprtmentId);
+	public ResponseEntity<ResponseStructure<Double>> totalSalaryOfDepartment(int departmentId) {
+		return employeeService.totalSalaryOfDepartment(departmentId);
 	}
 
 	@GetMapping("/employees/by-job-title")

@@ -238,9 +238,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public ResponseEntity<ResponseStructure<Double>> totalSalaryOfDepartment(int deaprtmentId) {
 		Department department=departmentRepository.findById(deaprtmentId).
 				orElseThrow(()->new DepartmentNotFoundByIdException("Department Not Found with "));
+		Double count=departmentRepository.findTotalSalaryByDepartmentId(department.getDepartmentId());
 		
 		return new ResponseEntity<ResponseStructure<Double>>(createResponseStructure
-				(HttpStatus.OK.value(), "Count of Department with "+deaprtmentId+" is", departmentRepository.findTotalSalaryByDepartmentId(department.getDepartmentId())),HttpStatus.OK);
+				(HttpStatus.OK.value(), "Count of Department with "+deaprtmentId+" is", count),HttpStatus.OK);
 	}
 
 	@Override
